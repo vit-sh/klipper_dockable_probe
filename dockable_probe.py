@@ -578,6 +578,9 @@ class DockableProbe:
         else:
             self.detach_probe()
         self.init_pos = None
+    def probing_move(self, pos, speed):
+        phoming = self.printer.lookup_object('homing')
+        return phoming.probing_move(self, pos, speed)
     def probe_prepare(self, hmove):
         if self.multi == MULTI_FIRST:
             self.multi = MULTI_ON
